@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: index.docker.io/jblaskowich/glmf
+  tag: v0.0.1
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  path: /
+  hosts:
+    - glmf.192.168.100.131.xip.io
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
